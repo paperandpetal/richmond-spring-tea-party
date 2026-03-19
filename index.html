@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richmond Spring Tea Party · May 3rd, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f2d9d9;
+    --rose: #c97b84;
+    --deep-rose: #a05060;
+    --sage: #b5c4b1;
+    --deep-sage: #7a9478;
+    --cream: #fdf6ee;
+    --warm-white: #fefaf5;
+    --lavender: #d8d0e8;
+    --text-dark: #2c1f1f;
+    --text-mid: #6b4a4a;
+    --text-light: #9c7878;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+    padding: 60px 20px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(242,217,217,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(216,208,232,0.5) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 60% 20%, rgba(181,196,177,0.3) 0%, transparent 50%);
+  }
+
+  /* Floating petals */
+  .petal {
+    position: absolute;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: floatPetal linear infinite;
+  }
+  .petal:nth-child(1)  { width:12px; height:18px; background:#e8b4bb; top:-20px; left:10%;  animation-duration:12s; animation-delay:0s;   }
+  .petal:nth-child(2)  { width:8px;  height:14px; background:#d4c5e2; top:-20px; left:25%;  animation-duration:15s; animation-delay:2s;   }
+  .petal:nth-child(3)  { width:10px; height:16px; background:#c8d8c4; top:-20px; left:40%;  animation-duration:11s; animation-delay:4s;   }
+  .petal:nth-child(4)  { width:14px; height:20px; background:#e8b4bb; top:-20px; left:55%;  animation-duration:14s; animation-delay:1s;   }
+  .petal:nth-child(5)  { width:9px;  height:13px; background:#d4c5e2; top:-20px; left:70%;  animation-duration:13s; animation-delay:3s;   }
+  .petal:nth-child(6)  { width:11px; height:17px; background:#f2d9d9; top:-20px; left:85%;  animation-duration:16s; animation-delay:5s;   }
+  .petal:nth-child(7)  { width:7px;  height:11px; background:#c8d8c4; top:-20px; left:5%;   animation-duration:10s; animation-delay:7s;   }
+  .petal:nth-child(8)  { width:13px; height:19px; background:#e8b4bb; top:-20px; left:92%;  animation-duration:18s; animation-delay:6s;   }
+
+  @keyframes floatPetal {
+    0%   { transform: translateY(0) rotate(0deg) translateX(0);   opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(40px); opacity: 0; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .hero-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--deep-rose);
+    line-height: 1;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.5s;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.7s;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.9s;
+  }
+
+  .hero-divider span { font-size: 1.2rem; color: var(--rose); }
+  .hero-divider::before,
+  .hero-divider::after {
+    content: '';
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rose));
+  }
+  .hero-divider::after { background: linear-gradient(to left, transparent, var(--rose)); }
+
+  .hero-details {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-mid);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 1.1s;
+  }
+
+  .hero-details em {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.9em;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-light);
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 1.2s;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--deep-rose);
+    color: white;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 1.4s;
+  }
+  .btn-primary:hover {
+    background: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(160,80,96,0.3);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    border: 1px solid var(--rose);
+    color: var(--deep-rose);
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 38px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    background: transparent;
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    background: var(--blush);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 2s;
+    color: var(--text-light);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--rose), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%       { opacity: 1;   transform: scaleY(1.1); }
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 90px 20px; }
+
+  .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rose);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--deep-rose);
+  }
+
+  .section-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--rose);
+    margin: 0 auto 40px;
+  }
+
+  .section-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-mid);
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 50px;
+  }
+
+  /* ── ABOUT / VIBE ── */
+  .vibe-section {
+    background: var(--warm-white);
+  }
+
+  .vibe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    margin-bottom: 60px;
+  }
+
+  .vibe-card {
+    background: var(--cream);
+    padding: 40px 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vibe-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--blush), var(--rose), var(--lavender));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .vibe-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(201,123,132,0.12); }
+  .vibe-card:hover::before { transform: scaleX(1); }
+
+  .vibe-icon { font-size: 2rem; margin-bottom: 16px; }
+
+  .vibe-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .vibe-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* ── DETAILS ── */
+  .details-section {
+    background: var(--cream);
+  }
+
+  .details-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .detail-card {
+    border: 1px solid var(--blush);
+    padding: 32px 24px;
+    text-align: center;
+    border-radius: 2px;
+    background: var(--warm-white);
+  }
+
+  .detail-icon { font-size: 1.8rem; margin-bottom: 12px; }
+
+  .detail-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 8px;
+  }
+
+  .detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-weight: 400;
+  }
+
+  .detail-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-top: 6px;
+  }
+
+  .tbd-badge {
+    display: inline-block;
+    background: var(--lavender);
+    color: #5a4d7a;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
+
+  /* ── PERFORMERS ── */
+  .performers-section {
+    background: var(--warm-white);
+  }
+
+  .performer-card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background: var(--cream);
+    border: 1px solid var(--blush);
+    padding: 40px;
+    border-radius: 2px;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .performer-card:hover { box-shadow: 0 8px 32px rgba(201,123,132,0.12); }
+
+  .performer-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--lavender));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+    border: 2px solid var(--rose);
+  }
+
+  .performer-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .performer-info p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  .performer-tag {
+    display: inline-block;
+    background: var(--blush);
+    color: var(--deep-rose);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .more-coming {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 1.05rem;
+    margin-top: 20px;
+  }
+
+  /* ── WHAT TO WEAR ── */
+  .wear-section {
+    background: linear-gradient(135deg, var(--blush) 0%, var(--cream) 50%, var(--lavender) 100%);
+  }
+
+  .wear-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .wear-item {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    padding: 28px 20px;
+    text-align: center;
+    border-radius: 2px;
+    border: 1px solid rgba(201,123,132,0.2);
+  }
+
+  .wear-item .wear-emoji { font-size: 2rem; margin-bottom: 10px; }
+
+  .wear-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .wear-item p {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .wear-note {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-mid);
+  }
+
+  /* ── TIKTOK ── */
+  .tiktok-section {
+    background: var(--text-dark);
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .tiktok-section .section-label { color: var(--blush); }
+
+  .tiktok-section .section-title {
+    color: var(--warm-white);
+    margin-bottom: 10px;
+  }
+
+  .tiktok-section .section-title em { color: var(--rose); }
+
+  .tiktok-section .section-rule { background: var(--rose); }
+
+  .tiktok-blurb {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: rgba(253,246,238,0.7);
+    max-width: 500px;
+    margin: 0 auto 16px;
+    line-height: 1.8;
+  }
+
+  .tiktok-venue-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--rose);
+    margin-bottom: 36px;
+  }
+
+  .tiktok-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--deep-rose);
+    color: white;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .tiktok-btn:hover {
+    background: var(--rose);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,123,132,0.4);
+  }
+
+  .tiktok-icon { font-size: 1.2rem; }
+
+  /* ── CONTRIBUTE FORM ── */
+  .contribute-section {
+    background: var(--cream);
+  }
+
+  .form-wrapper {
+    background: var(--warm-white);
+    border: 1px solid var(--blush);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(201,123,132,0.08);
+  }
+
+  .form-header {
+    background: linear-gradient(135deg, var(--blush), var(--lavender));
+    padding: 32px 40px;
+    text-align: center;
+  }
+
+  .form-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .form-header p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+  }
+
+  .form-wrapper iframe {
+    width: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* ── MUSICIAN FORM ── */
+  .musician-section {
+    background: var(--warm-white);
+  }
+
+  .musician-form {
+    background: var(--cream);
+    border: 1px solid var(--blush);
+    padding: 50px 40px;
+    border-radius: 2px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--blush);
+    border-radius: 2px;
+    background: var(--warm-white);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s ease;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--rose);
+  }
+
+  .form-group textarea { min-height: 100px; resize: vertical; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--deep-rose);
+    color: white;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    background: var(--text-dark);
+    transform: translateY(-1px);
+  }
+
+  .form-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark);
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  .footer-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: var(--rose);
+    margin-bottom: 16px;
+  }
+
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    color: rgba(253,246,238,0.5);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .footer-tiktok {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--rose);
+    text-decoration: none;
+  }
+
+  .footer-tiktok:hover { color: var(--blush); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(253,246,238,0.95);
+    backdrop-filter: blur(10px);
+    padding: 14px 40px;
+    box-shadow: 0 1px 20px rgba(201,123,132,0.1);
+  }
+
+  .nav-logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.6rem;
+    color: var(--deep-rose);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover { color: var(--deep-rose); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .performer-card { flex-direction: column; text-align: center; }
+    .musician-form { padding: 30px 20px; }
+    .form-header { padding: 24px 20px; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">RVA Tea</a>
+  <ul class="nav-links">
+    <li><a href="#vibe">The Vibe</a></li>
+    <li><a href="#details">Details</a></li>
+    <li><a href="#performers">Performers</a></li>
+    <li><a href="#wear">What to Wear</a></li>
+    <li><a href="#contribute">Contribute</a></li>
+    <li><a href="#musicians">Musicians</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Richmond, Virginia · Spring 2026</p>
+    <h1 class="hero-script">Richmond Tea Party</h1>
+    <p class="hero-title">A Community Garden Party</p>
+    <div class="hero-divider"><span>🌸</span></div>
+    <p class="hero-details">Saturday, May 3rd · 1:00 – 4:00 pm</p>
+    <p class="hero-details"><em>Location in RVA · Venue TBD</em></p>
+    <p class="hero-tagline">Florals, tea, live music & good company</p>
+    <a href="https://partiful.com" target="_blank" class="btn-primary">RSVP on Partiful</a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- VIBE -->
+<section class="vibe-section" id="vibe">
+  <div class="section-inner">
+    <p class="section-label reveal">What to Expect</p>
+    <h2 class="section-title reveal">A <em>community-built</em> afternoon</h2>
+    <div class="section-rule reveal"></div>
+    <p class="section-intro reveal">
+      This is a potluck-style, volunteer-powered spring gathering — think garden party meets community picnic. 
+      We're building this together, and it's going to be something really special.
+    </p>
+
+    <div class="vibe-grid">
+      <div class="vibe-card reveal">
+        <div class="vibe-icon">🫖</div>
+        <h3>Tea & Treats</h3>
+        <p>Community-contributed teas, baked goods, and savory bites. Think homemade, seasonal, and delicious.</p>
+      </div>
+      <div class="vibe-card reveal">
+        <div class="vibe-icon">🎶</div>
+        <h3>Live Music</h3>
+        <p>Original performances from Richmond's own talent. Intimate, acoustic, and perfectly springy.</p>
+      </div>
+      <div class="vibe-card reveal">
+        <div class="vibe-icon">💐</div>
+        <h3>Florals & Beauty</h3>
+        <p>Big hats, floral dresses, and garden party energy encouraged. Come dressed for the occasion.</p>
+      </div>
+      <div class="vibe-card reveal">
+        <div class="vibe-icon">🤝</div>
+        <h3>Community</h3>
+        <p>Meet your Richmond neighbors. This event belongs to everyone — it's built by the community, for the community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details-section" id="details">
+  <div class="section-inner">
+    <p class="section-label reveal">The Details</p>
+    <h2 class="section-title reveal"><em>Tentative</em> Plans</h2>
+    <div class="section-rule reveal"></div>
+    <p class="section-intro reveal">
+      Here's what we know so far. Follow <strong>@TheRosieCrown</strong> on TikTok for updates as details get locked in!
+    </p>
+
+    <div class="details-cards reveal">
+      <div class="detail-card">
+        <div class="detail-icon">📅</div>
+        <div class="detail-label">Date</div>
+        <div class="detail-value">Saturday, May 3rd</div>
+        <div class="detail-note">2026</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">🕐</div>
+        <div class="detail-label">Time</div>
+        <div class="detail-value">1:00 – 4:00 pm</div>
+        <div class="detail-note">Afternoon tea hours</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">📍</div>
+        <div class="detail-label">Location</div>
+        <div class="detail-value">Richmond, VA</div>
+        <div class="tbd-badge">Venue TBD</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">🎟️</div>
+        <div class="detail-label">RSVP</div>
+        <div class="detail-value">Free to attend</div>
+        <div class="detail-note">RSVP via Partiful</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMERS -->
+<section class="performers-section" id="performers">
+  <div class="section-inner">
+    <p class="section-label reveal">Entertainment</p>
+    <h2 class="section-title reveal">Meet the <em>Performers</em></h2>
+    <div class="section-rule reveal"></div>
+    <p class="section-intro reveal">
+      Confirmed performers will be announced here. More talent coming soon!
+    </p>
+
+    <div class="performer-card reveal">
+      <div class="performer-avatar">🌹</div>
+      <div class="performer-info">
+        <span class="performer-tag">Confirmed · Original Music</span>
+        <h3>Rosie Crown</h3>
+        <p>Performing a 30-minute set of original new music. Richmond's own — we can't wait for you to hear it.</p>
+      </div>
+    </div>
+
+    <p class="more-coming reveal">More performers to be announced — stay tuned 🌸</p>
+  </div>
+</section>
+
+<!-- WHAT TO WEAR -->
+<section class="wear-section" id="wear">
+  <div class="section-inner">
+    <p class="section-label reveal">Dress Code</p>
+    <h2 class="section-title reveal">What to <em>Wear</em></h2>
+    <div class="section-rule reveal"></div>
+    <p class="section-intro reveal">
+      There's no strict dress code — but we love a moment. Garden party glam is always welcome.
+    </p>
+
+    <div class="wear-grid reveal">
+      <div class="wear-item">
+        <div class="wear-emoji">🌸</div>
+        <h4>Florals</h4>
+        <p>Print dresses, floral accessories — go for it. The more blooms the better.</p>
+      </div>
+      <div class="wear-item">
+        <div class="wear-emoji">👒</div>
+        <h4>Big Hats</h4>
+        <p>Wide brimmed, fascinator, sun hat — hats are highly encouraged.</p>
+      </div>
+      <div class="wear-item">
+        <div class="wear-emoji">🩷</div>
+        <h4>Pastels</h4>
+        <p>Blush, lavender, sage, cream — soft spring tones are perfect.</p>
+      </div>
+      <div class="wear-item">
+        <div class="wear-emoji">👗</div>
+        <h4>Feminine & Fun</h4>
+        <p>Midi dresses, cottagecore, garden party — express yourself and have fun with it.</p>
+      </div>
+    </div>
+
+    <p class="wear-note reveal">Most importantly — wear whatever makes you feel beautiful 🌷</p>
+  </div>
+</section>
+
+<!-- TIKTOK -->
+<section class="tiktok-section" id="tiktok">
+  <div class="section-inner">
+    <p class="section-label">Follow for Updates</p>
+    <h2 class="section-title">Find us on <em>TikTok</em></h2>
+    <div class="section-rule" style="background:var(--rose); margin-bottom:30px;"></div>
+    <p class="tiktok-blurb">
+      Details are still coming together and we're deciding on the venue <em>with you</em> on TikTok. 
+      Over 500 comments and counting — come join the conversation!
+    </p>
+    <p class="tiktok-venue-note">✨ Venue will be chosen on TikTok — follow to have your say ✨</p>
+    <a href="https://www.tiktok.com/@therosieCrown" target="_blank" class="tiktok-btn">
+      <span class="tiktok-icon">🎵</span>
+      @TheRosieCrown
+    </a>
+  </div>
+</section>
+
+<!-- CONTRIBUTE -->
+<section class="contribute-section" id="contribute">
+  <div class="section-inner">
+    <p class="section-label reveal">Get Involved</p>
+    <h2 class="section-title reveal">Bring Something <em>Beautiful</em></h2>
+    <div class="section-rule reveal"></div>
+    <p class="section-intro reveal">
+      This is a potluck-style event — bring tea, food, flowers, or your skills. 
+      Every contribution makes this more magical.
+    </p>
+
+    <div class="form-wrapper reveal">
+      <div class="form-header">
+        <h3>Vendors & Contributions</h3>
+        <p>Tell us what you'd like to bring to the party 🌸</p>
+      </div>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdK9RY_Ha61xgHwN6XWruvj2fiTEwgFIJMnsjE_WhjGyPmJig/viewform?embedded=true"
+        height="1484"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0">Loading…
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- MUSICIAN FORM -->
+<section class="musician-section" id="musicians">
+  <div class="section-inner">
+    <p class="section-label reveal">Performers</p>
+    <h2 class="section-title reveal">Apply to <em>Perform</em></h2>
+    <div class="section-rule reveal"></div>
+    <p class="section-intro reveal">
+      Are you a Richmond musician? We'd love to feature you. Apply below and we'll be in touch.
+    </p>
+
+    <div class="form-wrapper reveal">
+      <div class="form-header">
+        <h3>Musician Application</h3>
+        <p>Apply to perform at the Richmond Spring Tea Party 🎶</p>
+      </div>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSd7_LhLWERdsQiHNwiun2Dua-OqhfWvGBofA9uKItwhU1V1dg/viewform?embedded=true"
+        height="1479"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0">Loading…
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-script">Richmond Tea Party</div>
+  <p class="footer-text">Saturday, May 3rd, 2026 · 1:00–4:00 pm · Richmond, Virginia</p>
+  <p class="footer-text" style="margin-bottom:16px;">Venue TBD — follow along for updates</p>
+  <a href="https://www.tiktok.com/@therosieCrown" target="_blank" class="footer-tiktok">@TheRosieCrown on TikTok</a>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Musician form submit (placeholder — replace with Google Form embed or Formspree)
+  function handleMusicianSubmit(btn) {
+    btn.textContent = '✓ Application Sent!';
+    btn.style.background = 'var(--deep-sage)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Submit Application';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 4000);
+  }
+</script>
+</body>
+</html>
